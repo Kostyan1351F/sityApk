@@ -1,0 +1,81 @@
+<CityRoot>:
+    name: "CityRoot"
+    search_input: search_box
+    results_list: results_list
+    orientation: "vertical"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'pics/fon.png'
+
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None
+        TextInput:
+            id: search_box
+            size_hint_x: 50
+            multiline: False
+            background_color: 0.1, 0.1, 0.1, 0.1
+            foreground_color: 1, 1, 1, 1
+        Button:
+            text: "Search"
+            size_hint_x: 25
+            background_color: 0.1, 0.1, 0.1, 0.1
+            on_release:
+                root.search_list()
+        Button:
+            text: "New Location"
+            size_hint_x: 25
+            background_color: 0.1, 0.1, 0.1, 0.1
+            on_press:
+                root.manager.current = "NewLocation"
+                root.manager.transition.direction = "up"
+    GridLayout:
+        cols: 1
+        row_default_height: 40
+        id: results_list
+
+
+
+<NewLocation>:
+    name: "NewLocation"
+    add_input: add_box
+    add_list: add_list
+    orientation: "vertical"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'pics/fon2.png'
+
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None
+        TextInput:
+            id: add_box
+            size_hint_x: 50
+            multiline: False
+            background_color: 0.1, 0.1, 0.1, 0.1
+        Button:
+            text: "Add"
+            size_hint_x: 50
+            background_color: 0.1, 0.1, 0.1, 0.1
+            on_press:
+                root.add_to_list()
+        Button:
+            text: "Back"
+            size_hint_x: 50
+            background_color: 0.1, 0.1, 0.1, 0.1
+            on_press:
+                root.manager.current = "CityRoot"
+                root.manager.transition.direction = "down"
+    GridLayout:
+        cols: 1
+        row_default_height: 40
+        id: add_list
+
+WinMan:
+    CityRoot:
+    NewLocation:
