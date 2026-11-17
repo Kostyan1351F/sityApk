@@ -2,7 +2,7 @@
 package.name = sity
 package.domain = org.test
 
-title = Minesweeper
+title = Sity
 
 
 version = 1.0.0
